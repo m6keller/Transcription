@@ -56,7 +56,8 @@ let temp = JSON.stringify({
             "amount": 40,
             "units": "days"
         }
-    }
+    },
+    "timestamp": 0
 });
 
 instructionDatabase.insert(JSON.parse(temp));
@@ -90,8 +91,8 @@ app.get('/all', (req, res) => {
     });
 });
 
-app.post('/:id', (req, res) => {
-    const post = req.body;
+app.post('/addInstructions', (req, res) => {
+    const post: Instructions = req.body;
     const timestamp: number = Date.now();
     post.timestamp = timestamp;
     instructionDatabase.insert(post);
