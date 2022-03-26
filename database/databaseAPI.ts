@@ -1,11 +1,26 @@
 import express from 'express';
 //import {InstructionMap} from 'hashTable';
 
+type ValuePerUnitOptions = {
+    amount: number,
+    units: string
+}
+
+type RefillOptions = {
+    needed: boolean;
+    when: number;
+}
+
 type Instructions = {
-    drug: string;
-    amount: number;
-    units: number;
-    timeOfDay: number;
+    drugName: string,
+    options: ValuePerUnitOptions,
+    consumptionInstructions: string,
+    frequency: ValuePerUnitOptions,
+    periodOfConsuption: ValuePerUnitOptions,
+    timeOfDay: string;
+    instructions: string;
+    expiryDate: number;
+    refillNeeded: RefillOptions
 }
 
 let instructions: Instructions[]; // add all instructinos to this array
