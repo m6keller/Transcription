@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Information</title>
+  </head>
+  <body>
+    <form class="m-auto" style="max-width: 800px" action="/patientInfo">
+      <h1>Please Enter Your Name</h1>
+      <input
+        type="text"
+        class="form-control form-control-lg"
+        id="patient-name2"
+        name="patient-name"
+      />
+      <button id="submit-button" class="btn btn-primary btn-lg" type="submit">
+        Submit Name
+      </button>
+    </form>
+    <script>
+      // var patientId;
+
+      // async function getInformation() {
+      //   const response = await fetch(
+      //     "http://127.0.0.1:3000/patientName/" + patientID
+      //   );
+
+      //   const data = await response.json();
+      //   console.log(data);
+      //   return data;
+      // }
+      // function displayInfo(patientData) {
+      //   var patientName = document.createElement("p");
+      //   patientName.innerHTML = patientData.patient - name;
+      //   body.appendChild(patientName);
+      // }
+
+      var button = document.getElementById("submit-button");
+      button.addEventListener("click", () => {
+        var patientId = document.getElementById("patient-name2").value;
+        sessionStorage.setItem("perm", patientId); // fetchEventLists.ts will get this item and will show private events
+      });
+    </script>
+  </body>
+</html>

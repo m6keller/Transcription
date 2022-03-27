@@ -1,36 +1,135 @@
 import express from 'express';
 const Datastore = require('nedb');
+const bodyParser = require('body-parser');
+// const { body,validationResult } = require('express-validator');
+// const multer = require('multer');
 const instructionDatabase = new Datastore('instructions.db');
-
 instructionDatabase.loadDatabase();
-//import {InstructionMap} from 'hashTable';
 
-type ValuePerUnitOptions = {
-    amount: number,
-    units: string
+type howLong = {
+    until: string,
+    date: string
 }
-
+type instruction = {
+    location: string,
+    consumption: string
+}
 type RefillOptions = {
     needed: boolean;
-    when: ValuePerUnitOptions;
+    when: string;
 }
-
+type quantityPerUnit = {
+    quanitity: number,
+    unit: string
+}
 type Instructions = {
     patientName: string,
+    patientID: string,
     drugName: string,
-    options: ValuePerUnitOptions,
+    options: quantityPerUnit,
     consumptionInstructions: string,
-    frequency: ValuePerUnitOptions,
-    periodOfConsuption: ValuePerUnitOptions,
+    amountPer: quantityPerUnit,
+    frequency: string,
+    periodOfConsuption: howLong,
     timeOfDay: string,
-    instructions: string,
-    expiryDate: number,
+    instructions: instruction,
+    expiryDate: string,
     refillNeeded: RefillOptions,
     timestamp: number
 }
 
-//var instructions: Instructions[] = new Array( 300 ); // add all instructinos to this array
+const router = express.Router();
+const app = express();
+app.use('/', router);
+app.use(express.static('public'));
+// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true }));
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + "/index.html");
+});
+
+app.get('/patient-side', (req, res) => {
+    res.sendFile(__dirname + "/patient-info.html");
+});
+
+app.get('/about', (req, res) => {
+    res.send('This an API for PharmaHacks 2022 Submission');
+});
+
+
+
+app.get('/patientName/:id', (req, res) => { 
+    console.log( "get is being called" );
+    const { id } = req.params;
+    instructionDatabase.find({"patient-name": id }, (err: any, data: any) => {
+        if( err || !id || data === [] ) res.status(418).send({message: "Invalid id"});
+        else res.json( data );
+    });
+});
+
+app.get('/patientInfo', (req, res) => { 
+    console.log( " other get is being called" );
+    console.log( req );
+    console.log( req.query );
+    console.log( req.query.id );
+
+    res.sendFile(__dirname + "/patient-info.html");
+});
+
+app.get('/all', (req, res) => {
+    instructionDatabase.find({ $not: {patientName: "" } }, (err: any, data: any) => {
+        if( err ) res.status(418).send({message: "Invalid id"});
+        res.send(data);
+    });
+});
+
+app.post('/addInstructions', (req, res) => {
+    console.log(req);
+
+    const data = req.body;
+    console.log(data);
+    const timestamp: number = Date.now();
+    data.timestamp = timestamp;
+    instructionDatabase.insert(data);
+    return res.send(req.body);
+});
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => console.log('App listening on PORT ' + port));
+
+// delete if multiple instances
+
+
+// class PostsController {
+//     public path = '/posts';
+//     public router = express.Router();
+    
+//     private prvInstructions: Instructions[] = instructions; // add all instructinos to this array
+
+//     constructor() {
+//         this.intializeRoutes();
+//     }
+//     public intializeRoutes() {
+//         this.router.get(this.path, this.getAllPosts);
+//         this.router.post(this.path, this.createAPost);
+//     }    
+
+//     getAllPosts = (req: express.Request, res: express.Response) => {
+//         res.send(this.prvInstructions);
+//     }
+ 
+//     public createAPost = (req: express.Request, res: express.Response) => {
+//         const post: Instructions = req.body;
+//         this.prvInstructions.push(post);
+//         res.send(post);
+//     }
+// 
+
+
+
+/*
 let temp = JSON.stringify({
     "patientName": "valma",
     "drugName": "your_love",
@@ -62,70 +161,51 @@ let temp = JSON.stringify({
 
 instructionDatabase.insert(JSON.parse(temp));
 
-const router = express.Router();
-const app = express();
-app.use('/', router);
-app.use(express.json());
+*/
 
 
-app.get('/', (req, res) => {
-    res.send('This an API for PharmaHacks 2022 Submission');
-});
+/*
 
-app.get('/about', (req, res) => {
-    res.send('This an API for PharmaHacks 2022 Submission');
-});
 
-app.get('/patientName/:id', (req, res) => { // depends what request is
-    const { id } = req.params;
-    instructionDatabase.find({"patientName": id }, (err: any, data: any) => {
-        if( err || !id || data === [] ) res.status(418).send({message: "Invalid id"});
-        else res.send( data );
-    });
-});
-
-app.get('/all', (req, res) => {
-    instructionDatabase.find({ $not: {patientName: "" } }, (err: any, data: any) => {
-        if( err ) res.status(418).send({message: "Invalid id"});
-        res.send(data);
-    });
-});
-
-app.post('/addInstructions', (req, res) => {
-    const post: Instructions = req.body;
-    const timestamp: number = Date.now();
-    post.timestamp = timestamp;
-    instructionDatabase.insert(post);
-    res.send(post);
-});
-
-const port = process.env.PORT || 3000;
-
-app.listen(port, () => console.log('App listening on PORT ' + port));
+var data = {
+    patientName: "Matthew",
+    patientID: 768790,
+    drugName: "hello",
+    options: "hello",
+    consumptionInstructions: {
+        quanitity: 87980,
+        unit: "mg"
+    },
+    amountPer: {
+        amount: 78980,
+        unit: "mL",
+    },
+    frequency: "heyhey",
+    periodOfConsuption: {
+        until: "ahjskjnd",
+        date: "ahksnjd",
+    },
+    timeOfDay: "morning",
+    instructions: {
+        location: "ahsjd",
+        consumption: "hkdsn",
+    },
+    expiryDate: "ashdknf",
+    refillNeeded: {
+        needed: "aksjd",
+        when: "asjhknjldfa",
+    },
+    timestamp: null,
+};
 
 
 
-// class PostsController {
-//     public path = '/posts';
-//     public router = express.Router();
-    
-//     private prvInstructions: Instructions[] = instructions; // add all instructinos to this array
+const options = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+};
 
-//     constructor() {
-//         this.intializeRoutes();
-//     }
-//     public intializeRoutes() {
-//         this.router.get(this.path, this.getAllPosts);
-//         this.router.post(this.path, this.createAPost);
-//     }    
+fetch("/addInstructions", options);
 
-//     getAllPosts = (req: express.Request, res: express.Response) => {
-//         res.send(this.prvInstructions);
-//     }
- 
-//     public createAPost = (req: express.Request, res: express.Response) => {
-//         const post: Instructions = req.body;
-//         this.prvInstructions.push(post);
-//         res.send(post);
-//     }
-// 
+*/
