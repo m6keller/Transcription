@@ -85,7 +85,7 @@ app.get('/patientName/:id', (req, res) => { // depends what request is
 });
 
 app.get('/all', (req, res) => {
-    instructionDatabase.find({ $not:  {patientName: "" } }, (err: any, data: any) => {
+    instructionDatabase.find({ $not: {patientName: "" } }, (err: any, data: any) => {
         if( err ) res.status(418).send({message: "Invalid id"});
         res.send(data);
     });
