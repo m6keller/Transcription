@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Transcription</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+      integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container" style="margin-top: 2em">
+      <form
+        class="m-auto"
+        style="max-width: 800px"
+        method="POST"
+        action="/addInstructions"
+      >
+        <h1>Prescription Input Form</h1>
+        <h3 class="my-4">Patient Information</h3>
+        <hr class="my-4" />
+        <div class="form-group mb-3 row">
+          <label for="patient-name2" class="col-md-5 col-form-label"
+            >Patient Name</label
+          >
+          <div class="col-md-7">
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="patient-name2"
+              name="patient-name"
+            />
+          </div>
+        </div>
+        <div class="form-group mb-3 row">
+          <label for="patient-id3" class="col-md-5 col-form-label"
+            >Patient ID</label
+          >
+          <div class="col-md-7">
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="patient-id3"
+              name="patient-id"
+            />
+          </div>
+        </div>
+        <hr class="my-4" />
+        <h4 class="my-4">Drug Information</h4>
+        <div class="form-group mb-3 row">
+          <label for="drug-name6" class="col-md-5 col-form-label"
+            >Drug Name</label
+          >
+          <div class="col-md-7">
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="drug-name6"
+              name="drug-name"
+            />
+          </div>
+        </div>
+        <div class="form-group mb-3 row">
+          <label for="quantity-prescribed7" class="col-md-5 col-form-label"
+            >Quantity Prescribed</label
+          >
+          <div class="col-md-7">
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="quantity-prescribed7"
+              name="quantity-prescribed"
+            />
+          </div>
+        </div>
+        <div class="form-group mb-3 row">
+          <label for="unit8" class="col-md-5 col-form-label">Unit</label>
+          <div class="col-md-7">
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="unit"
+                id="unit8_2"
+                checked
+                value=" capsules"
+              /><label
+                class="form-check-label custom-control-label"
+                for="unit8_2"
+              >
+                capsules</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="unit"
+                id="unit8_3"
+                value=" vial"
+              /><label
+                class="form-check-label custom-control-label"
+                for="unit8_3"
+              >
+                vial</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="unit"
+                id="unit8_4"
+                value=" ointment"
+              /><label
+                class="form-check-label custom-control-label"
+                for="unit8_4"
+              >
+                ointment</label
+              >
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <h4 class="my-4">How Much</h4>
+        <div class="form-group mb-3 row">
+          <label for="amount-numbers-only11" class="col-md-5 col-form-label"
+            >Amount (numbers only)</label
+          >
+          <div class="col-md-7">
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="amount-numbers-only11"
+              name="amount-numbers-only"
+            />
+          </div>
+        </div>
+        <div class="form-group mb-3 row">
+          <label for="unit12" class="col-md-5 col-form-label">Unit</label>
+          <div class="col-md-7">
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="unit"
+                id="unit12_2"
+                checked
+                value=" mL"
+              /><label
+                class="form-check-label custom-control-label"
+                for="unit12_2"
+              >
+                mL</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="unit"
+                id="unit12_3"
+                value=" mg"
+              /><label
+                class="form-check-label custom-control-label"
+                for="unit12_3"
+              >
+                mg</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="unit"
+                id="unit12_4"
+                value=" g"
+              /><label
+                class="form-check-label custom-control-label"
+                for="unit12_4"
+              >
+                g</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="unit"
+                id="unit12_5"
+                value=" capsules"
+              /><label
+                class="form-check-label custom-control-label"
+                for="unit12_5"
+              >
+                capsules</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="unit"
+                id="unit12_6"
+                value=" drops"
+              /><label
+                class="form-check-label custom-control-label"
+                for="unit12_6"
+              >
+                drops</label
+              >
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <h4 class="my-4">How Often</h4>
+        <div class="form-group mb-3 row">
+          <label for="frequency16" class="col-md-5 col-form-label"
+            >Frequency</label
+          >
+          <div class="col-md-7">
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="frequency"
+                id="frequency16_2"
+                checked
+                value=" per day"
+              /><label
+                class="form-check-label custom-control-label"
+                for="frequency16_2"
+              >
+                per day</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="frequency"
+                id="frequency16_3"
+                value=" per two days"
+              /><label
+                class="form-check-label custom-control-label"
+                for="frequency16_3"
+              >
+                per two days</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="frequency"
+                id="frequency16_4"
+                value=" per week"
+              /><label
+                class="form-check-label custom-control-label"
+                for="frequency16_4"
+              >
+                per week</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="frequency"
+                id="frequency16_5"
+                value=" as needed"
+              /><label
+                class="form-check-label custom-control-label"
+                for="frequency16_5"
+              >
+                as needed</label
+              >
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <h4 class="my-4">How Long to Take It For</h4>
+        <div class="form-group mb-3 row">
+          <label for="until19" class="col-md-5 col-form-label">Until</label>
+          <div class="col-md-7">
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="until"
+                id="until19_2"
+                checked
+                value=" Empty Bottle"
+              /><label
+                class="form-check-label custom-control-label"
+                for="until19_2"
+              >
+                Empty Bottle</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="until"
+                id="until19_3"
+                value=" Until (date)"
+              /><label
+                class="form-check-label custom-control-label"
+                for="until19_3"
+              >
+                Until (date)</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="until"
+                id="until19_4"
+                value=" Until no longer needed"
+              /><label
+                class="form-check-label custom-control-label"
+                for="until19_4"
+              >
+                Until no longer needed</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-3 row">
+          <label for="date20" class="col-md-5 col-form-label">Date</label>
+          <div class="col-md-7">
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="date20"
+              name="date"
+            />
+          </div>
+        </div>
+        <hr class="my-4" />
+        <h4 class="my-4">Time of Day to Take It</h4>
+        <div class="form-group mb-3 row">
+          <label for="time-of-day23" class="col-md-5 col-form-label"
+            >Time of Day</label
+          >
+          <div class="col-md-7">
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="time-of-day"
+                id="time-of-day23_2"
+                checked
+                value=" At Bedtime"
+              /><label
+                class="form-check-label custom-control-label"
+                for="time-of-day23_2"
+              >
+                At Bedtime</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="time-of-day"
+                id="time-of-day23_3"
+                value=" Before Meals"
+              /><label
+                class="form-check-label custom-control-label"
+                for="time-of-day23_3"
+              >
+                Before Meals</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="time-of-day"
+                id="time-of-day23_4"
+                value=" Before Breakfast"
+              /><label
+                class="form-check-label custom-control-label"
+                for="time-of-day23_4"
+              >
+                Before Breakfast</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="time-of-day"
+                id="time-of-day23_5"
+                value=" Before Dinner"
+              /><label
+                class="form-check-label custom-control-label"
+                for="time-of-day23_5"
+              >
+                Before Dinner</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="time-of-day"
+                id="time-of-day23_6"
+                value=" At night"
+              /><label
+                class="form-check-label custom-control-label"
+                for="time-of-day23_6"
+              >
+                At night</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="time-of-day"
+                id="time-of-day23_7"
+                value=" In the Morning"
+              /><label
+                class="form-check-label custom-control-label"
+                for="time-of-day23_7"
+              >
+                In the Morning</label
+              >
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <h4 class="my-4">Instructions</h4>
+        <div class="form-group mb-3 row">
+          <label for="location26" class="col-md-5 col-form-label"
+            >Location</label
+          >
+          <div class="col-md-7">
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="location"
+                id="location26_2"
+                value=" Right eye"
+              /><label
+                class="form-check-label custom-control-label"
+                for="location26_2"
+              >
+                Right eye</label
+              >
+            </div>
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="location"
+                id="location26_3"
+                value=" Left eye"
+              /><label
+                class="form-check-label custom-control-label"
+                for="location26_3"
+              >
+                Left eye</label
+              >
+            </div>
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="location"
+                id="location26_4"
+                value=" Right Ear"
+              /><label
+                class="form-check-label custom-control-label"
+                for="location26_4"
+              >
+                Right Ear</label
+              >
+            </div>
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="location"
+                id="location26_5"
+                value=" Left Ear"
+              /><label
+                class="form-check-label custom-control-label"
+                for="location26_5"
+              >
+                Left Ear</label
+              >
+            </div>
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="location"
+                id="location26_6"
+                value=" Nose"
+              /><label
+                class="form-check-label custom-control-label"
+                for="location26_6"
+              >
+                Nose</label
+              >
+            </div>
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="location"
+                id="location26_7"
+                value=" Cheek"
+              /><label
+                class="form-check-label custom-control-label"
+                for="location26_7"
+              >
+                Cheek</label
+              >
+            </div>
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="location"
+                id="location26_8"
+                value=" Rectum"
+              /><label
+                class="form-check-label custom-control-label"
+                for="location26_8"
+              >
+                Rectum</label
+              >
+            </div>
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="location"
+                id="location26_9"
+                value=" Vagina"
+              /><label
+                class="form-check-label custom-control-label"
+                for="location26_9"
+              >
+                Vagina</label
+              >
+            </div>
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="location"
+                id="location26_10"
+                value=" Skin"
+              /><label
+                class="form-check-label custom-control-label"
+                for="location26_10"
+              >
+                Skin</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-3 row">
+          <label for="intruction27" class="col-md-5 col-form-label"
+            >Intruction</label
+          >
+          <div class="col-md-7">
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="intruction"
+                id="intruction27_2"
+                value=" With food"
+              /><label
+                class="form-check-label custom-control-label"
+                for="intruction27_2"
+              >
+                With food</label
+              >
+            </div>
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="intruction"
+                id="intruction27_3"
+                value=" With water"
+              /><label
+                class="form-check-label custom-control-label"
+                for="intruction27_3"
+              >
+                With water</label
+              >
+            </div>
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="intruction"
+                id="intruction27_4"
+                value=" By Mouth"
+              /><label
+                class="form-check-label custom-control-label"
+                for="intruction27_4"
+              >
+                By Mouth</label
+              >
+            </div>
+            <div class="form-check custom-control custom-checkbox">
+              <input
+                class="form-check-input custom-control-input"
+                type="checkbox"
+                name="intruction"
+                id="intruction27_5"
+                value=" Apply to Body Location"
+              /><label
+                class="form-check-label custom-control-label"
+                for="intruction27_5"
+              >
+                Apply to Body Location</label
+              >
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <div class="form-group mb-3 row">
+          <label for="expiry-date29" class="col-md-5 col-form-label"
+            >Expiry Date</label
+          >
+          <div class="col-md-7">
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="expiry-date29"
+              name="expiry-date"
+            />
+          </div>
+        </div>
+        <div class="form-group mb-3 row">
+          <label for="refill30" class="col-md-5 col-form-label">Refill</label>
+          <div class="col-md-7">
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="refill"
+                id="refill30_2"
+                checked
+                value=" If needed"
+              /><label
+                class="form-check-label custom-control-label"
+                for="refill30_2"
+              >
+                If needed</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="refill"
+                id="refill30_3"
+                value=" Before (date)"
+              /><label
+                class="form-check-label custom-control-label"
+                for="refill30_3"
+              >
+                Before (date)</label
+              >
+            </div>
+            <div class="form-check custom-control custom-radio">
+              <input
+                class="form-check-input custom-control-input"
+                type="radio"
+                name="refill"
+                id="refill30_4"
+                value=" No refill"
+              /><label
+                class="form-check-label custom-control-label"
+                for="refill30_4"
+              >
+                No refill</label
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group mb-3 row">
+          <label for="refill-date31" class="col-md-5 col-form-label"
+            >Refill date</label
+          >
+          <div class="col-md-7">
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="refill-date31"
+              name="refill-date"
+            />
+          </div>
+        </div>
+        <div class="form-group mb-3 row">
+          <label for="send-a-message32" class="col-md-5 col-form-label"></label>
+          <div class="col-md-7">
+            <button
+              id="submit-button"
+              class="btn btn-primary btn-lg"
+              type="submit"
+            >
+              Submit Prescription
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
